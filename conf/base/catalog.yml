@@ -1,0 +1,108 @@
+# Here you can define all your data sets by using simple YAML syntax.
+#
+# Documentation for this file format can be found in "The Data Catalog"
+# Link: https://kedro.readthedocs.io/en/stable/data/data_catalog.html
+
+project:
+    type: pandas.CSVDataSet
+    filepath: data/02_intermediate/train.csv
+    layer: intermediate
+
+raw_dataset:
+    type: pandas.CSVDataSet
+    filepath: data/01_raw/train.csv
+    layer: raw
+
+Network_Logs:
+    type: pandas.CSVDataSet
+    filepath: data/01_raw/train.csv
+    layer: raw
+
+Customer_Data:
+
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/train.csv
+  layer: raw
+
+
+Other_Data_Sources:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/train.csv
+  layer: raw
+
+Towers_and_Complaints:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/train.csv
+  layer: raw
+
+CDRs:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/train.csv
+  layer: raw
+
+IMEI_info:
+    type: pandas.CSVDataSet
+    filepath: data/01_raw/train.csv
+    layer: raw
+
+processed_dataset:
+    type: pandas.CSVDataSet
+    filepath: data/03_primary/train.csv
+    layer: primary
+
+created_dataset:
+    type: pandas.CSVDataSet
+    filepath: data/02_intermediate/train.csv
+    layer: intermediate
+
+created_model:
+    type: pandas.CSVDataSet
+    filepath: data/02_intermediate/model_details.csv
+    layer: intermediate
+
+UDMI:
+    type: pandas.CSVDataSet
+    filepath: data/02_intermediate/udmi.csv
+    layer: intermediate
+
+X_train:
+    type: pandas.CSVDataSet
+    filepath: data/05_model_input/X_train.csv
+    layer: model_input
+
+y_train:
+    type: pandas.CSVDataSet
+    filepath: data/05_model_input/y_train.csv
+    layer: model_input
+
+X_test:
+    type: pandas.CSVDataSet
+    filepath: data/05_model_input/X_test.csv
+    layer: model_input
+
+y_test:
+    type: pandas.CSVDataSet
+    filepath: data/05_model_input/y_test.csv
+    layer: model_input
+
+ml_model:
+  type: kedro_mlflow.io.artifacts.MlflowArtifactDataSet
+  data_set:
+    type: kedro_mlflow.io.models.MlflowModelSaverDataSet
+    flavor: mlflow.sklearn
+    filepath: data/06_models/ml_model.pkl
+
+error_metrics:
+    type: pandas.CSVDataSet
+    filepath: data/08_reporting/error_metrics.csv
+    layer: reporting
+
+predictions:
+  type: pandas.CSVDataSet
+  filepath: data/07_model_output/predictions.csv
+  layer: model_output
+
+served_predictions:
+  type: pandas.CSVDataSet
+  filepath: data/07_model_output/served_predictions.csv
+  layer: model_output
